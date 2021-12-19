@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Название: {{ book.title }}</h1>
+
+  <p><strong>Автор:</strong> <a>{{ book.author}}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>Жанр:</strong>  {{ book.genre.genre }}</p>
+  <p><strong>Издательство:</strong>  {{book.publishing.publishing}}</p>
+
+  
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Результаты поиска</h1>
+<br>
+{% if object_list %}
+  {% for reader in object_list %}
+      <article>
+        <ul class="list-group" style="width: 50%;"> 
+          <li class="list-group-item">
+            Читатель:  {{ reader.fio }}
+          </li>
+          
+          <li class="list-group-item">
+            Номер билета: {{ reader.id }}
+          </li>
+        </ul>
+      </article>
+      {% empty %}
+      <p>Не найдено читателей по вашему запросу<br>Попробуйте повторить запрос с другой формулировкой</p>
+      {% endfor %}
+{%endif%}
+{% if order_list %}
+  {% for order in order_list %}
+      <article>
+        <ul class="list-group" style="width: 50%;"> 
+          <li class="list-group-item">
+            Номер:  {{ order.order_id }}
+          </li>
+          
+          <li class="list-group-item">
+            Читатель: {{ order.reader.fio }}
+          </li>
+          <li class="list-group-item">
+            Книга: {{ order.book.title }}
+          </li>
+          <li class="list-group-item">
+            Статус: {% if  order.return_mark %} Выполнен {% else %} Выполняется {% endif %}
+          </li>
+        </ul>
+      </article>
+      {% empty %}
+      <p>Не найдено читателей по вашему запросу<br>Попробуйте повторить запрос с другой формулировкой</p>
+      {% endfor %}
+{%endif%}
+ 
+
+{% endblock %}

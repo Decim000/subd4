@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Имя: {{ reader.fio }}</h1>
+
+  <p><strong>Номер:</strong> <a>{{ reader.phone}}</a></p> 
+  <p><strong>Билет:</strong>  {{ reader.id }}</p>
+  <div class="form-group mb-2">
+    <form action="{% url 'reader-update' reader.pk %}" >
+      <button type="submit" class="btn btn-default">Редактировать</button>
+    </form>
+  </div>
+
+  <div class="form-group mb-2">
+    <form action="{% url 'reader-delete' reader.pk %}" method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Удалить</button>
+    </form>
+  </div>
+
+  
+{% endblock %}

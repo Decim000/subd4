@@ -1,0 +1,41 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div style="margin-top: 3%;">
+    <h1>Каталог книг</h1>
+
+    <div class="form-group mb-2">
+    <form action="{% url 'detective' %}" method="get">
+      <button type="submit" class="btn btn-default">Детектив</button>
+    </form>
+  </div>
+  <div class="form-group mb-2">
+    <form action="{% url 'romance' %}" method="get">
+      <button type="submit" class="btn btn-default">Роман</button>
+    </form>
+  </div>
+
+  <div class="form-group mb-2">
+    <form action="{% url 'drama' %}" method="get">
+      <button type="submit" class="btn btn-default">Роман</button>
+    </form>
+  </div>
+
+  </div>
+<br>
+
+    {% if book_list %}
+    <ul class="list-group" style="width: 50%;">
+
+      {% for book in book_list %}
+      <li class="list-group-item">
+        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
+      </li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no books in the library.</p>
+    {% endif %} 
+  </div>
+{% endblock %}

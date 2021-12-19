@@ -1,0 +1,58 @@
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Local Library Home</h1>
+
+  <p>Добро пожаловать в <em>Библиотечная сеть</em></p>
+  <p>Поиск:</p>
+  <p>
+  <form action="{% url 'reader-search' %}" class="navbar-form navbar-left" method="get">
+
+    <div class="form-group">
+        <input type="text" name="q" class="form-control" placeholder="Введите запрос">
+    </div>
+        <button type="submit" class="btn btn-default">Поиск</button>
+    </form>
+    </p>
+    <br><br>
+    
+    <br><br><br><br>
+
+
+<span><a href="{% url 'order_create' %}" class="top-menu" style="padding-right: 10%;">Добавить заказ: 
+    <span class="glyphicon glyphicon-plus"></span></a>
+    <a href="" class="top-menu" style="padding-right: 10%;">Добавить читателя в черный список: 
+        <span class="glyphicon glyphicon-plus"></span></a>
+        
+</span>
+<br><br>
+
+
+<!--<form action="" class="post-form" style="width: 50%;">{% csrf_token %}
+       
+    <button type="submit" class="save btn btn-default">Посмотреть заказы</button>
+</form>-->
+<!--
+<h2>Список книг:</h2>
+
+  
+  {% for book in book_list %}
+  {{book.title}}
+  <ul>
+      <li>{{book.get_author_values}}</li>
+      <li>{{book.get_genre_values}}</li>
+      <li>{{book.publishing.publishing}}</li>
+      {% for copy in copies %}
+      {% if book.id == copy.book.id %}
+      <li> Секция: {{copy.section.category.name}}, Зал: {{copy.section.room.name}} </li>
+      {% endif %}
+      {% endfor %}
+  </ul>
+  {% endfor %}-->
+
+ 
+{% endblock %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">

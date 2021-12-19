@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<div style="margin-top: 3%;">
+    <h1>Список операций с читателями</h1>
+
+  </div>
+<br>
+
+    {% if logs_list %}
+    
+
+      {% for log in logs_list %}
+      <ul class="list-group" style="width: 50%;">
+      <li class="list-group-item">
+        {{ log.change }}
+      </li>
+      <li class="list-group-item">
+         {{ log.time }}
+      </li>
+     
+    </ul>
+    <br>
+      {% endfor %}
+
+   
+    {% else %}
+      <p>There are no logs yet.</p>
+    {% endif %} 
+  </div>
+{% endblock %}

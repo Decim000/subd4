@@ -1,0 +1,50 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div style="margin-top: 3%;">
+    <h1>Список заказов</h1>
+
+    <div class="form-group mb-2">
+    <form action="{% url 'orders-done' %}" method="get">
+      <button type="submit" class="btn btn-default">Выполненные</button>
+    </form>
+  </div>
+  <div class="form-group mb-2">
+    <form action="{% url 'orders-process' %}" method="get">
+      <button type="submit" class="btn btn-default">Невыполненные</button>
+    </form>
+  </div>
+
+  </div>
+<br>
+
+    {% if order_list %}
+    
+
+      {% for order in order_list %}
+      <ul class="list-group" style="width: 50%;">
+      <li class="list-group-item">
+        <a href="{{ book.get_absolute_url }}">{{ order.order_id }}</a>
+      </li>
+      <li class="list-group-item">
+        Название книги: {{ order.book.title }}
+      </li>
+      <li class="list-group-item">
+        Имя читателя: {{ order.reader.fio }}
+      </li>
+      <li class="list-group-item">
+        Дата заказа: {{ order.date_of_order }}
+      </li>
+      <li class="list-group-item">
+        Статус заказа: {% if order.return_mark %} Выполнен {% else %} В процессе {% endif %}
+      </li> 
+    </ul>
+    <br>
+      {% endfor %}
+
+   
+    {% else %}
+      <p>There are no books in the library.</p>
+    {% endif %} 
+  </div>
+{% endblock %}
